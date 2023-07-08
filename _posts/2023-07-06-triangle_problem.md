@@ -2,7 +2,7 @@
 title: The Triangle Problem
 date: 2023-07-06 20:28:00
 categories: [Math Problems]
-tags: [trigonometry]
+tags: [trigonometry, english]
 math: true
 permalink: /triangle_problem/
 ---
