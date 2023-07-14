@@ -1,8 +1,8 @@
 ---
 title: The Complex Circle Problem
 date: 2023-07-05 20:28:00
-categories: [Math Problems]
-tags: [complex_numbers, python, english]
+categories: [Maths]
+tags: [complex numbers, python, english]
 math: true
 permalink: /complex_circle_problem/
 ---

@@ -1,8 +1,8 @@
 ---
 title: La importancia un buen generador de números aleatorios en una simulación
 date: 2023-07-08 10:28:00
-categories: [Projects]
-tags: [math, spanish, university]
+categories: [Maths]
+tags: [spanish, university, python]
 math: true
 authors: [micaela_estrella, dylan_tintenfich]
 permalink: /trabajo_integrador_simulacion/
