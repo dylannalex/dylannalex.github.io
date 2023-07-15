@@ -479,7 +479,7 @@ Una vez conseguimos el fondo de la gráfica y la forma deseada, podemos combinar
 Para combinar las ecuaciones implícitas $F(x, y) = 0$ y $G(x, y) = 0$, aplicamos la propiedad de unión de lugares geométricos:
 
 $$
-M(x, y) = F(x, y) \cdot \sqrt{G(x, y)}{} = 0
+M(x, y) = F(x, y) \cdot \frac{\sqrt{-G(x, y)}}{\sqrt{-G(x, y)}} = 0
 $$
 
 Reemplazando obtenemos la inmensa ecuación implícita:
