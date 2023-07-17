@@ -1,7 +1,7 @@
 ---
 title: The Triangle Problem
 date: 2023-07-06 20:28:00
-categories: [Maths]
+categories: [Math Topics]
 tags: [trigonometry, english]
 math: true
 permalink: /triangle_problem/
@@ -9,7 +9,7 @@ permalink: /triangle_problem/
 
 ![png](/assets/img/posts/2023-07-06-triangle_problem/background.jpg)
 
-Discover a simple yet engaging trigonometry problem that involves an isosceles triangle within a square. Your goal is to determine the length of the triangle's hypotenuse given the angle of the isosceles triangle and the side length of the square. Sharpen your problem-solving skills and enjoy exploring the relationship between angles and side lengths in this intriguing challenge. Have fun uncovering the solution!
+Discover a simple yet engaging trigonometry problem that involves an isosceles triangle within a square. Your goal is to determine the length of the triangle's base given the angle of the isosceles triangle and the side length of the square. Sharpen your problem-solving skills and enjoy exploring the relationship between angles and side lengths in this intriguing challenge. Have fun uncovering the solution!
 
 ## Statement
 
