@@ -12,7 +12,7 @@ image:
 
 Este blog trata sobre mi viaje en el mundo de las matemáticas y la programación. Publicaré sobre mis descubrimientos, mis pensamientos, mis ideas y mis proyectos. ¡Espero que disfrutes leyendo mis publicaciones tanto como yo disfruto escribiéndolas!
 
-> Ten en cuenta que algunos de los artículos de este blog están en inglés, mientras que otros están en español. Puedes filtrar las publicaciones por idioma utilizando las etiquetas disponibles, como [English](/tags/english/) o [Spanish](/tags/spanish/).
+> Ten en cuenta que algunos de los artículos de este blog están en inglés, mientras que otros están en español. Puedes filtrar las publicaciones por idioma utilizando las etiquetas disponibles, como [english](/tags/english/) o [spanish](/tags/spanish/).
 {: .prompt-info }
 
 ## Mis Proyectos
