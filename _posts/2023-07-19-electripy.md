@@ -15,9 +15,11 @@ img_path: ../assets/img/posts/2023-07-19-electripy/
 ![png](background.png)
 
 Welcome to **ElectriPy**, a powerful and interactive electrostatic simulator designed to help you gain an intuitive understanding of how electric fields and charges behave. Created as a personal project to visualize the principles of physics, ElectriPy lets you play with electrons and protons, observing how the electric field changes as you add more charges to the simulation.
-Purpose
 
 ElectriPy was developed as a user-friendly and engaging tool to facilitate the exploration of electrostatics. Unlike precise calculators, ElectriPy emphasizes simulation and learning through interactive play. Whether you are a student, an educator, or simply someone curious about the fascinating world of physics, this simulator is here to spark your interest and deepen your understanding of electric fields.
+
+> You can find ElectriPy source code on [GitHub](https://github.com/dylannalex/electripy).
+{: .prompt-info }
 
 ## Installation
 
