@@ -15,12 +15,14 @@ In this mathematical puzzle, we'll exercise our minds with basic probability and
 Given a circle $C_a$​ of radius $a$ centered at the origin, [inscribed](https://en.m.wikipedia.org/wiki/Inscribed_figure) in a square $S$ of side $2a$.
 
 ![png](statement-S_and_Ca.png){: w="500" h="500"}
+_A circle $C_a$ inscribed in a square $S$._
 
 Consider a random variable $B \sim \text{Uniform}(0, a)$, the random variables $X, Y \sim \text{Uniform}(-a, a)$, the outcomes $b \in B$, $x \in X$ and $y \in Y$, and a real number $\rho \in [0, 1)$.
 
 Find the probability of observing an outcome $b$ such that the probability of a circle $C_b$ with radius $b$ centered at $P = (x, y)$ being fully contained within $C_a$ is greater than $\rho$.
 
 ![gif](statement-sampling_Cb.gif){: w="500" h="500"}
+_Example of sampling random $C_b$ circles for a fixed value of $b$._
 
 That is, find the probability of observing an outcome $b$ such that:
 
@@ -28,11 +30,14 @@ $$
 \mathbb{P}\{C_b \subseteq C_a\} > \rho
 $$
 
+> Note that $C_b$ is not necessarily fully contained in $S$.
+{: .prompt-info }
+
 ## Solution
 
 ### Probability of $C_b \subseteq C_a$
 
-Let's think of a point $P$ inside the square $S$. The circle $C_b$ is described by the circumference of radius $b$ centered at $P$. If $C_b$ is fully contained in $C_a$, the distance between $P$ and the circumference of $C_a$ must be greater than $b$.
+Let's consider a point $P$ inside the square $S$. The circle $C_b$ is described by the circumference of radius $b$ centered at $P$. If $C_b$ is fully contained in $C_a$, then $P$ must be inside $C_a$, and the distance between $P$ and the circumference of $C_a$ must be greater than $b$.
 
 ![png](step1.png){: w="1000" h="500"}
 
@@ -43,7 +48,7 @@ This means that $C_b$ is fully contained in $C_a$ if and only if its center $P$ 
 Then the probability that $C_b$ is fully contained in $C_a$ is the ratio between the area of $C_{ab}$ and the area of $S$:
 
 $$
-\mathbb{P}\{C_b \subseteq C_a\} = \frac{\pi (a-b)^2}{a^2}
+\mathbb{P}\{C_b \subseteq C_a\} = \frac{\pi (a-b)^2}{(2a)^2} = \frac{\pi}{4} \frac{(a-b)^2}{a^2}
 $$
 
 ### Probability of $\mathbb{P}(C_b \subseteq C_a) > \rho$
@@ -57,13 +62,13 @@ $$
 that is
 
 $$
-\frac{\pi (a-b)^2}{a^2} > \rho
+\frac{\pi}{4} \frac{(a-b)^2}{a^2} > \rho
 $$
 
 By clearing $b$ from the inequality, we get
 
 $$
-b < a \left(1 - \sqrt{\frac{\rho}{\pi}}\right)
+b < a \left(1 - \sqrt{\frac{4}{\pi} \rho }\right)
 $$
 
 As $B$ is a uniformly distributed within the interval $[0, a]$, its probability density function is:
@@ -76,16 +81,16 @@ f(x) =
      \end{cases}
 $$
 
-Then the probability of $b < a \left(1 - \sqrt{\frac{\rho}{\pi}}\right)$ is simply the area of the rectangle with height $\frac{1}{a}$ and base $a \left(1 - \sqrt{\frac{\rho}{\pi}}\right)$
+Then the probability of $b < a \left(1 - \sqrt{\frac{4}{\pi} \rho }\right)$ is simply the area of the rectangle with height $\frac{1}{a}$ and base $a \left(1 - \sqrt{\frac{4}{\pi} \rho }\right)$
 
-![png](step3.png){: w="500" h="500"}
+![png](step3.png){: w="400" h="400"}
 
 $$
-P\Big\{b < a \left(1 - \sqrt{\frac{\rho}{\pi}}\right)\Big\} = \frac{1}{a} \cdot a \left(1 - \sqrt{\frac{\rho}{\pi}}\right) = 1 - \sqrt{\frac{\rho}{\pi}}
+P\Big\{b < a \left(1 - \sqrt{\frac{4}{\pi} \rho }\right)\Big\} = \frac{1}{a} \cdot a \left(1 - \sqrt{\frac{4}{\pi} \rho }\right) = 1 - \sqrt{\frac{4}{\pi} \rho }
 $$
 
 Therefore, the probability of observing an outcome $b$ such that $\mathbb{P}${$C_b \subseteq C_a$}$ > \rho$ is
 
 $$
-\therefore \mathbb{P}\Big\{\mathbb{P}\{C_b \subseteq C_a\} > \rho\Big\} = 1 - \sqrt{\frac{\rho}{\pi}}
+\therefore \mathbb{P}\Big\{\mathbb{P}\{C_b \subseteq C_a\} > \rho\Big\} = 1 - \sqrt{\frac{4}{\pi} \rho }
 $$
