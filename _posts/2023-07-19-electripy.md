@@ -2,7 +2,7 @@
 title: ElectriPy
 date: 2023-07-19 20:19:34
 categories: [My Projects]
-tags: [physics, english]
+tags: [english]
 math: true
 permalink: /electripy/
 img_path: ../assets/img/posts/2023-07-19-electripy/

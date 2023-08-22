@@ -2,7 +2,7 @@
 title: The Complex Circle Problem
 date: 2023-07-05 20:28:00
 categories: [Math Topics]
-tags: [complex numbers, python, english]
+tags: [english]
 math: true
 permalink: /complex_circle_problem/
 ---

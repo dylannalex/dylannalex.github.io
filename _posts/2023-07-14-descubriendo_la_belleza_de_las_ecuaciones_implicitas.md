@@ -2,7 +2,7 @@
 title: Descubriendo la Belleza de las Ecuaciones Implícitas
 date: 2023-07-14 21:00:00
 categories: [Math Topics]
-tags: [analytic geometry, spanish]
+tags: [spanish]
 math: true
 permalink: /belleza_de_las_funciones_implicitas/
 img_path: ../assets/img/posts/2023-07-14-descubriendo_la_belleza_de_las_ecuaciones_implicitas/

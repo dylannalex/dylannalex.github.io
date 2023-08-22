@@ -2,7 +2,7 @@
 title: Random Circle Problem
 date: 2023-07-21 13:42:57
 categories: [Math Topics]
-tags: [probability, english]
+tags: [english]
 math: true
 permalink: /random_circle_problem/
 img_path: ../assets/img/posts/2023-07-21-random_circle/
