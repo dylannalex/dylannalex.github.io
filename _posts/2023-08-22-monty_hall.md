@@ -1,5 +1,5 @@
 ---
-title: Monty Hall Problem - An intuitive explanation
+title: "Demystifying the Monty Hall Problem: A Step-by-Step Guide"
 date: 2023-08-22 13:30:00
 categories: [Math Topics]
 tags: [english]
@@ -8,17 +8,17 @@ permalink: /monty_hall/
 img_path: ../assets/img/posts/2023-08-22-monty_hall/
 ---
 
-The Monty Hall problem is a famous probability puzzle that has been the subject of many debates and controversies. In this post, we'll explore the problem and its solution in a simple and intuitive way.
+The Monty Hall problem is a famous probability puzzle that has been the subject of many debates and controversies. In this post, we'll explore the problem and its solution in a simple and accessible way for all audiences.
 
-# Monty Hall Problem
+## Monty Hall Problem
 
 Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?"
 
 ![png](problem.png)
 
-What would you do? Would you stick with your original choice, or would you switch? Is it to your advantage to switch your choice?
+The host, naturally, knows in advance which of the three doors hides the car. This means that whatever door you initially choose, he will always open another door with a goat behind it. The question is: Would you stick with your original choice, or would you switch? Is it to your advantage to switch your choice?
 
-The instinctive, but incorrect, answer of almost all newcomers to the problem is: "Stay, since it is equally likely that the car is behind either of the two closed doors". In this post, we'll see why this answer is wrong, and we will gain an intuitive understanding of why switching is the best strategy.
+The instinctive, but incorrect, answer of almost all newcomers to the problem is: "Stay, since it is equally likely that the car is behind either of the two closed doors". In this post, we'll see why this answer is wrong, and we will gain a strong understanding of why switching is the best strategy.
 
 
 ## Probability Review
