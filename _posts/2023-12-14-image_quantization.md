@@ -1,5 +1,5 @@
 ---
-title: "k-Means Clustering for Image Quantization"
+title: "K-Means Clustering for Image Quantization"
 date: 2023-12-14 10:00:00
 categories: [Machine Learning]
 tags: [english]
@@ -45,6 +45,7 @@ from src import image
 
 * `KMeans.cluster_centers_`: An array of shape _(n_clusters, n_features)_ representing the final cluster centers after fitting the model. Each row corresponds to the centroid of a cluster in the feature space.
 
+* `plot_k_metrics(k_values: list[int], clusters_cost_list: list[float], execution_time_list: list[float], figsize: tuple = (10, 4))`: Plots the clusters cost and execution time of $k$-means for different values of $k$.
 
 
 ```python
@@ -146,8 +147,8 @@ k8_means = model.KMeans(n_clusters=8, random_state=44)
 ><src.model.KMeans at 0x1237c937210>
 
 
-The model ran for 72 iterations:
- 
+We can inspect executed iterations:
+
 ```python
 k8_means.iterations
 ```
@@ -155,7 +156,7 @@ k8_means.iterations
 > 72
 
 
-The labels found are:
+And we can access the labels and centroids (or centers) found:
 
 ```python
 k8_means.labels_
@@ -163,8 +164,6 @@ k8_means.labels_
 
 > array([6, 6, 6, ..., 6, 6, 6], dtype=int64)
 
-
-And the centroids (or centers) are:
 
 ```python
 k8_means.cluster_centers_
@@ -202,6 +201,7 @@ k8_colors
 [223, 224, 222]  
 ], dtype=uint8)
 
+
 Let's plot the centers in the 3-dimensional space:
 
 ```python
@@ -234,126 +234,84 @@ image.display_images(k8_image)
     
 
 
+To accelerate this process we create a function `quantize_image()`, that given the image to quantize and the value of $k$, trains the $k$-means model, shows the training status (time and iterations executed), and displays the centroids and the resulting quantized image. It returns the quantized image.
+
+
+```python
+def quantize_image(img: image.Image, k: int, random_state: int):
+    kmeans = model.KMeans(n_clusters=k, random_state=random_state)
+
+    # Training
+    print("[Training]")
+    %time kmeans.fit(img.rgb_vector)
+    print(f"Iterations: {kmeans.iterations}")
+
+    # Results
+    print("\n[Results]")
+    centroids = np.uint8(kmeans.cluster_centers_)
+    print(f"{k}-means centroids:")
+    image.plot_rgb_vector(centroids, alpha=1, s=100, title=f"{k}-means centroids")
+
+    quantized_img = image.rgb_vector_to_image(centroids[kmeans.labels_], img.shape)
+    quantized_img.title = f"{k}-mean image"
+
+    print("Quantized image:")
+    image.display_images(quantized_img)
+
+    return quantized_img
+```
+
 ### $16$-means
 
-We train the model with $16$ clusters.
+We can now train the $16$-means algorithm with the function we created:
 
 ```python
-k16_means = model.KMeans(n_clusters=16, random_state=44)
-%time k16_means.fit(img.rgb_vector)
-```
-
-> CPU times: total: 30.9 s  
-> Wall time: 31.6 s  
->   
-> <src.model.KMeans at 0x12300237f50>
-
-
-The model ran all the 100 available iterations:
-
-```python
-k16_means.iterations
-```
-
-> 100
-
-And the labels and centers found are:
-
-```python
-k16_means.labels_
-```
-
-> array([13, 13, 13, ..., 13, 13, 13], dtype=int64)
-
-
-```python
-k16_colors = np.uint8(k16_means.cluster_centers_)
-image.plot_rgb_vector(k16_colors, alpha=1, s=100, title="16-means centroids")
+k16_image = quantize_image(img, k=16, random_state=44)
 ```
 
 
+> [Training]  
+> CPU times: total: 25.8 s  
+> Wall time: 26.2 s  
+> Iterations: 100  
+> 
+> [Results]  
+> 16-means centroids:  
     
 ![png](image_quantization_34_0.png)
     
-
-The resulting quantized image is:
-
-
-```python
-k16_rgb_vector = k16_colors[k16_means.labels_]
-k16_image = image.rgb_vector_to_image(k16_rgb_vector, img.shape)
-k16_image.title = "16-mean Image"
-image.display_images(k16_image)
-```
-
-
+> Quantized image:
     
 ![png](image_quantization_35_0.png)
     
 
-
 ### $32$-means
 
-Lastly we train the model with $32$ clusters.
+Finally, we quantize the image with $k = 32$. From our previous observations, we expect the quantized image to be more similar to the original, and an increase in the execution time.
 
 
 ```python
-k32_means = model.KMeans(n_clusters=32, random_state=44)
-%time k32_means.fit(img.rgb_vector)
-```
-
-> CPU times: total: 39 s  
-> Wall time: 40.1 s  
->     
-><src.model.KMeans at 0x1237ee7ead0>
-
-
-The model executed 76 iterations:
-
-
-```python
-k32_means.iterations
-```
-
-> 76
-
-The labels found are:
-
-```python
-k32_means.labels_
-```
-
-> array([5, 5, 5, ..., 5, 5, 5], dtype=int64)
-
-
-And the centers found are:
-
-```python
-k32_colors = np.uint8(k32_means.cluster_centers_)
-image.plot_rgb_vector(k32_colors, alpha=1, s=100, title="32-means centroids")
+k32_image = quantize_image(img, k=32, random_state=44)
 ```
 
 
+> [Training]  
+> CPU times: total: 36.3 s  
+> Wall time: 36.5 s  
+> Iterations: 76  
+>  
+> [Results]  
+> 32-means centroids:  
     
 ![png](image_quantization_40_0.png)
     
-
-The quantized image with $32$-means is:
-
-```python
-k32_rgb_vector = k32_colors[k32_means.labels_]
-k32_image = image.rgb_vector_to_image(k32_rgb_vector, img.shape)
-k32_image.title = "32-mean Image"
-image.display_images(k32_image)
-```
-
-
+> Quantized image:
     
 ![png](image_quantization_41_0.png)
     
 
 
-## Comparison
+### Comparison
 
 By comparing the results obtained with $k=8$, $k=16$ and $k=32$, we can observe how the choice of the number of centers influences the visual appearance of the image. A smaller value of $k$ may result in a more pronounced reduction in color variety, while a larger $k$ might preserve more intricate details in the color distribution. 
 
@@ -366,6 +324,11 @@ image.display_images(k8_image, k16_image, k32_image, figsize=(20, 15))
     
 ![png](image_quantization_43_0.png)
     
+
+It's worth noting that, in addition to the visual impact, the computational complexity of the algorithm increases with a larger value of $k$. Therefore, the choice of $k$ involves a trade-off between computational efficiency and the level of detail preserved in the color representation.
+
+
+## Quality measure and execution time
 
 
 We can quantify the image quality with a clusters cost function, which measures the squared Euclidean distance between each feature vector $x^{(i)}$ and its representative (i.e., cluster centroid) $z_j$ from the cluster $C_j$.
@@ -383,33 +346,70 @@ def clusters_cost(X, centroids, labels):
         distance = np.linalg.norm(cluster - centroids[j])**2
         cost += np.sum(distance)
     return cost
-
-k8_cost = clusters_cost(img.rgb_vector, k8_means.cluster_centers_, k8_means.labels_)
-k16_cost = clusters_cost(img.rgb_vector, k16_means.cluster_centers_, k16_means.labels_)
-k32_cost = clusters_cost(img.rgb_vector, k32_means.cluster_centers_, k32_means.labels_)
 ```
 
-We can visualize how the clusters cost decreases as $k$ increases: 
+If we analyze our dataset $X$ representing the pixels of our image, we can count the number of distinct colors the image has:
+
+```python
+len(np.unique(img.rgb_vector, axis=0))
+```
+
+> 25786
+
+A quantization with $0$ clusters cost would require a value $k=25786$, as we would need a centroid for each unique color of the image. This is not feasible due to the significant computational load, and the resulting quantized image would not be of much use. Consequently, we have to limit the range of $k$ to analyze how the cluster cost and time execution evolve as $k$ increases.
+
+The `model.plot_k_metrics()` function plots the change in clusters cost and execution time for different values of $k$. To use this function, we first need to train the model for the list of values of $k$ and record the clusters cost and execution time at each step. To accomplish this and handle the intensive computation more efficiently, we create a `record_k_metrics()` function. We utilize the highly optimized `sklearn.cluster.KMeans` class to significantly improve the execution time. Please note that our implementation, `model.KMeans`, has an identical interface to `sklearn.cluster.KMeans`, except for the parameter `n_init`, which is not implemented in `model.KMeans`.
+
+```python
+from sklearn.cluster import KMeans
+from time import time
+
+def record_k_metrics(
+    img: image.Image, 
+    k_values: list[int], 
+    random_state: int,
+    ):
+    # Train the model for each k
+    execution_time_list = []
+    clusters_cost_list = []
+    for k in k_values:
+        kmeans = KMeans(n_clusters=k, random_state=random_state, n_init=5)
+        # Execution time
+        start_time = time()
+        kmeans.fit(img.rgb_vector)
+        end_time = time()
+        execution_time_list.append(end_time - start_time)
+        # Clusters cost
+        centroids = np.uint8(kmeans.cluster_centers_)
+        cost = clusters_cost(img.rgb_vector, centroids, kmeans.labels_)
+        clusters_cost_list.append(cost)
+
+    return clusters_cost_list, execution_time_list
+```
+
+We can visualize the clusters cost and execution time for $k = 2, 4, 6, \dots, 64$:
 
 
 ```python
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots(figsize=(8, 3))
-ax.scatter((8, 16, 32), (k8_cost, k16_cost, k32_cost), s=50)
-ax.set_title("clusters cost as $k$ increases")
-ax.set_xlabel("k")
-ax.set_ylabel("clusters cost")
-ax.set_xticks([i for i in range(8, 33, 4)])
-
-plt.grid()
-plt.show()
+k_values = list(range(2, 65, 2))
+clusters_cost_list, execution_time_list = record_k_metrics(img, k_values, random_state=44)
+model.plot_k_metrics(k_values, clusters_cost_list, execution_time_list)
 ```
-
-
     
-![png](image_quantization_47_0.png)
-    
+![png](image_quantization_51_0.png)
+
+As $k$-means is a stochastic algorithm, the relationship between $k$ and the metrics introduces some noise, resulting in occasional fluctuations in the function. Nevertheless, a discernible decreasing trend in clusters cost and an increasing trend in execution time become evident as $k$ increases.
+
+## Conclusion
+
+In this exploration of image quantization using the $k$-means algorithm, we delved into the intricacies of color reduction in a sample flower image. By varying the number of clusters ($k$) and applying $k$-means clustering, we observed the impact on image quality and computational complexity.
+
+Experimenting with $k$-means using $8$, $16$, and $32$ clusters provided distinct insights into the trade-offs between color variety and computational efficiency. We visualized the resulting images, analyzed cluster centroids, and compared the clusters' cost function across different k values.
+
+Further, we explored the influence of $k$ on execution time and clusters cost. The `plot_k_metrics()` function facilitated a comprehensive view of these metrics, shedding light on the intricate relationship between the number of clusters and computational performance.
+
+This project, though a humble beginning, marks a significant step in understanding the nuances of image quantization. Your feedback and thoughts are invaluable as we continue to refine and expand our exploration of machine learning concepts.
+
+Thank you for joining me on this journey, and I look forward to hearing your insights and suggestions.
 
 
-It's worth noting that, in addition to the visual impact, the computational complexity of the algorithm increases with a larger value of $k$. Therefore, the choice of $k$ involves a trade-off between computational efficiency and the level of detail preserved in the color representation.
