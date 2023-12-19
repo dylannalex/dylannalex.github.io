@@ -1,7 +1,7 @@
 ---
 title: Descubriendo la Belleza de las Ecuaciones Implícitas
 date: 2023-07-14 21:00:00
-categories: [Math Topics]
+categories: [📚 Math]
 tags: [spanish]
 math: true
 permalink: /belleza_de_las_funciones_implicitas/

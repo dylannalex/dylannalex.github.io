@@ -1,7 +1,7 @@
 ---
 title: "K-Means Clustering for Image Quantization"
 date: 2023-12-14 10:00:00
-categories: [Machine Learning]
+categories: [🧠 Machine Learning]
 tags: [english]
 math: true
 permalink: /image_quantization/

@@ -1,7 +1,7 @@
 ---
 title: Random Circle Problem
 date: 2023-07-21 13:42:57
-categories: [Math Topics]
+categories: [📚 Math]
 tags: [english]
 math: true
 permalink: /random_circle_problem/

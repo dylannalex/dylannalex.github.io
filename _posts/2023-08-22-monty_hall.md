@@ -1,7 +1,7 @@
 ---
 title: "Demystifying the Monty Hall Problem: A Step-by-Step Guide"
 date: 2023-08-22 13:30:00
-categories: [Math Topics]
+categories: [📚 Math]
 tags: [english]
 math: true
 permalink: /monty_hall/

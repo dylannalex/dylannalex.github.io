@@ -1,7 +1,7 @@
 ---
 title: ElectriPy
 date: 2023-07-19 20:19:34
-categories: [My Projects]
+categories: [💻 Programming Projects]
 tags: [english]
 math: true
 permalink: /electripy/
