@@ -10,21 +10,46 @@ order: 3
 <!-- > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
 {: .prompt-tip } -->
 
-![background_gif](/assets/img/aboutme_background.gif){: width="360" height="260" }
 
-I'm Dylan Tintenfich, a dedicated system engineering student based in Mendoza, Argentina. With a strong passion for programming and a love for mathematics and machine learning, I find joy in exploring the vast possibilities at their intersection.
+## Hi 👋, I'm Dylan
 
-Throughout my four years of experience in Python programming, I have embarked on numerous projects that showcase my skills and expertise. These projects span a range of domains, including data scraping, bot development, and the creation of math-related programs. I am well-versed in popular Python libraries such as numpy, matplotlib, and pandas, and I am continuously expanding my knowledge in these areas.
+<div style="display: flex; align-items: center;">
+    <div style="flex: 1;">
+        <p>
+            I am a passionate Systems Engineering student with a deep love for Mathematics and an innate fascination with Machine Learning. I'm enthusiastic about collaborating on projects that involve data analysis, Python programming, and creatively solving complex challenges. Currently, I'm actively engaged in a research group, focusing on metaheuristics optimization. I love to learn new stuff every day and to share my knowledge with others.
+        </p>
+    </div>
+    <div style="flex-shrink: 0; margin-left: 20px;">
+        <img src="/assets/img/aboutme_background.gif" alt="background_gif" width="310" height="260">
+    </div>
+</div>
 
-Currently, I am actively involved in a dynamic research group focused on parallelizing metaheuristics algorithms. Under the guidance of esteemed professors specializing in parallel computing, I am specifically focused on the optimization of ant colony algorithms. My goal is to develop innovative parallel algorithms or enhance the sequential algorithms themselves, striving for improved efficiency and performance.
+## Hobbies 🎮
 
-In addition to my technical abilities, I possess exceptional soft skills that contribute to my overall effectiveness as a professional. I am an excellent communicator, adept at conveying complex concepts with clarity. Strong teamwork skills enable me to lead teams and collaborate effectively to achieve common objectives. When confronted with challenging problems, my problem-solving skills come into play, allowing me to devise creative and effective solutions.
+- **Playing the Piano:** I find joy in playing the piano, specially when I want to relax.
+  
+- **Gaming:** I love playing video games with my friends. Ones of my favorite is Minecraft, Mario Bros and Chess.
 
-Adaptability is another strength of mine, as I thrive in fast-paced environments and maintain a high standard of work. My creativity enables me to think outside the box and bring forth innovative ideas. Furthermore, my excellent time management skills ensure that I can prioritize tasks effectively and consistently meet deadlines.
+- **Nature Walks and Rock Collecting:** One of my favorite pastimes is going for walks and collecting fascinating rocks and minerals along the way.
 
-I invite you to connect with me on various social media platforms to stay updated on my latest projects, achievements, and insights:
+These hobbies contribute to my overall appreciation for creativity, exploration, and the beauty of the world around us.
 
-* [GitHub](https://github.com/dylannalex)
-* [LinkedIn](https://www.linkedin.com/in/dylan-tintenfich-b80a101b4/?locale=en_US)
+## Skills 🎯
 
-Thank you for taking the time to visit my website and learn more about me. Feel free to explore my projects, and don't hesitate to reach out if you have any inquiries or collaboration opportunities!
+I'm proficient at:
+- **Languages**: Python, C, C++, Java
+- **Data Science**: Numpy, Pandas, Matplotlib, Selenium
+- **Tools**: Git, Jupyter, VS Code, TeX
+- **Databases**: MySQL
+
+As you might have guessed, my favorite programming language is:
+
+```python
+print("Python 🐍")
+```
+
+## Connect with Me 🌐
+
+[![Static Badge](https://img.shields.io/badge/blog-dylannalex.github.io-orange)](https://dylannalex.github.io/) [![Linkedin Badge](https://img.shields.io/badge/-Dylan_Tintenfich-0072b1?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/dylan-tintenfich/ "Connect on LinkedIn") [![Twitter Badge](https://img.shields.io/badge/-@dylantinten-00acee?style=flat&logo=Twitter&logoColor=white)](https://twitter.com/dylantinten "Follow on Twitter") [![Gmail Badge](https://img.shields.io/badge/-tintenfichdylan@gmail.com-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:tintenfichdylan@gmail.com "Connect via Email")
+
+Feel free to connect with me on various platforms. I'm always open to discussions, collaborations, and making new connections.
