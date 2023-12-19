@@ -16,7 +16,7 @@ order: 3
 <div style="display: flex; align-items: center;">
     <div style="flex: 1;">
         <p>
-            I am a passionate Systems Engineering student with a deep love for Mathematics and an innate fascination with Machine Learning. I'm enthusiastic about collaborating on projects that involve data analysis, Python programming, and creatively solving complex challenges. Currently, I'm actively engaged in a research group, focusing on metaheuristics optimization. I love to learn new stuff every day and to share my knowledge with others.
+            I am an Argentine 🇦🇷 &nbsp;passionate Systems Engineering student with a deep love for Mathematics and an innate fascination with Machine Learning. I'm enthusiastic about collaborating on projects that involve data analysis, Python programming, and creatively solving complex challenges. Currently, I'm actively engaged in a research group, focusing on metaheuristics optimization. I love to learn new stuff every day and to share my knowledge with others.
         </p>
     </div>
     <div style="flex-shrink: 0; margin-left: 20px;">
