@@ -10,7 +10,7 @@ img_path: ../assets/img/posts/2023-12-14-image_quantization/
 
 ![png](front.png)
 
-In this post we explore image quantization by applying the k-means algorithm to a sample flower image 🌻. We will explore how different values of k affects the quality of the resulting image and computational complexity of the algorithm. Let's dive right in!
+In this post we explore image quantization by applying the k-means algorithm to a sample flower image. We will explore how different values of k affects the quality of the resulting image and computational complexity of the algorithm. Let's dive right in!
 
 ## Implemented Modules
 
