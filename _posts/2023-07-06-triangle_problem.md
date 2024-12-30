@@ -14,17 +14,17 @@ Discover a simple yet engaging trigonometry problem that involves an isosceles t
 ## Statement
 
 
-Find a function $f$ of $a$ and $\theta$ with domain
+Find a function $$ f $$ of $$ a $$ and $$ \theta $$ with domain
 
 $$
 f : \mathbb{R}^{+} \times (0, \frac{\pi}{2}] \rightarrow \mathbb{R}^{+} 
 $$
 
-such that $f(a, \theta) = x$.
+such that $$ f(a, \theta) = x $$.
 
 ![png](/assets/img/posts/2023-07-06-triangle_problem/statement.gif)
 
-For example, consider $a = 1$ and $\theta = \frac{\pi}{2}$, then the value of $x$ is
+For example, consider $$ a = 1 $$ and $$ \theta = \frac{\pi}{2} $$, then the value of $$ x $$ is
 
 $$
 x = f(1, \frac{\pi}{2}) = \sqrt{1^2 + 1^2} = \sqrt{2}
@@ -34,13 +34,13 @@ $$
 
 ## Solution
 
-#### Defining $x$ in terms of $b$
+#### Defining $$ x $$ in terms of $$ b $$
 
-First, let's define a new variable $b$ equal to the length of the two remaining sides of the triangle 
+First, let's define a new variable $$ b $$ equal to the length of the two remaining sides of the triangle 
 
 ![png](/assets/img/posts/2023-07-06-triangle_problem/solution_step_one.png){: w="400" h="400" }
 
-We can now write $x$ in terms of $b$ and $\theta$
+We can now write $$ x $$ in terms of $$ b $$ and $$ \theta $$
 
 ![png](/assets/img/posts/2023-07-06-triangle_problem/solution_step_two.png){: w="300" h="300" }
 
@@ -51,9 +51,9 @@ x &= 2 b \sin(\frac{\theta}{2})
 \end{align*}
 $$
 
-#### Finding $b$ value
+#### Finding $$ b $$ value
 
-Now we have to find the value of $b$
+Now we have to find the value of $$ b $$
 
 ![png](/assets/img/posts/2023-07-06-triangle_problem/solution_step_three.png){: w="300" h="300" }
 
@@ -64,7 +64,7 @@ b &= \frac{a}{\cos(\beta)}
 \end{align*}
 $$
 
-To calculate $\cos(\beta)$, keep in mind that $2\beta + \theta = \frac{\pi}{2}$
+To calculate $$ \cos(\beta) $$, keep in mind that $$ 2\beta + \theta = \frac{\pi}{2} $$
 
 $$
 \begin{align*}
@@ -92,7 +92,7 @@ $$
 b = \frac{a\sqrt{2}}{\cos(\frac{\theta}{2}) + \sin(\frac{\theta}{2})}
 $$
 
-#### Finding $x$
+#### Finding $$ x $$
 
 $$
 \begin{align*}
