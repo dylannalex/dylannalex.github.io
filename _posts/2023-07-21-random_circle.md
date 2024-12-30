@@ -42,7 +42,7 @@ Let's consider a point $$ P $$ inside the square $$ S $$. The circle $$ C_b $$ i
 
 This means that $$ C_b $$ is fully contained in $$ C_a $$ if and only if its center $$ P $$ is inside the circle $$ C_{ab} $$ of radius $$ a-b $$ centered at the origin.
 
-![gif](step2.gif){: w="400" h="400"}
+![gif](/assets/img/posts/2023-07-21-random_circle/step2.gif){: w="400" h="400"}
 
 Then the probability that $$ C_b $$ is fully contained in $$ C_a $$ is the ratio between the area of $$ C_{ab} $$ and the area of $$ S $$:
 
