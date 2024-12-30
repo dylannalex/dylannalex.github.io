@@ -5,9 +5,8 @@ pin: true
 math: true
 permalink: /bienvenido/
 tags: [spanish]
-img_path: ../assets/img/posts/2023-07-04-welcome/
 image:
-  path: background-es.jpg
+  path: /assets/img/posts/2023-07-04-welcome/background-es.jpg
 ---
 
 ¡Bienvenid@ a mi blog, donde comparto mi viaje en el mundo de las matemáticas y la programación! Exploremos juntos distintos descubrimientos, pensamientos, ideas y proyectos. Los posts están disponibles tanto en inglés como en español, con [etiquetas de idioma](/tags) para filtrar.

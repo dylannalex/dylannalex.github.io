@@ -42,9 +42,9 @@ A continuación se explicarán los generadores de números pseudoaleatorios, los
 
 ### Generador de números pseudoaleatorios
 
-Para facilitar la creación de generadores de números pseudoaleatorios a lo largo del trabajo práctico, se decidió abstraer el concepto de *generador de números aleatorios* con la clase `Generator`. Todos los generadores son subclases de `Generator` y deben implementar el método `next()`, el cual retorna el siguiente número aleatorio. También debe implementar  el método `get_xn_sequence()` y el método `get_random_numbers()`, los cuales devuelven la secuencia entera de números pseudoaleatorios $\{\mu_0, \mu_1, \dots, \mu_n\}$ y la secuencia de reales generados $\{x_0, x_1, \dots, x_n\}$ respectivamente. Por último deben implementar el método `verify_parameters()`, que verifica la validez de los parámetros del generador.
+Para facilitar la creación de generadores de números pseudoaleatorios a lo largo del trabajo práctico, se decidió abstraer el concepto de *generador de números aleatorios* con la clase `Generator`. Todos los generadores son subclases de `Generator` y deben implementar el método `next()`, el cual retorna el siguiente número aleatorio. También debe implementar  el método `get_xn_sequence()` y el método `get_random_numbers()`, los cuales devuelven la secuencia entera de números pseudoaleatorios $$ \{\mu_0, \mu_1, \dots, \mu_n\} $$ y la secuencia de reales generados $$ \{x_0, x_1, \dots, x_n\} $$ respectivamente. Por último deben implementar el método `verify_parameters()`, que verifica la validez de los parámetros del generador.
 
-Además, todas las subclases de `Generador` cuentan con el método `plot_random_numbers()`, que grafica la secuencia de números pseudoaleatorios en el plano $xy$, donde el eje $x$ representa el índice $i$ del número pseudoaleatorio, y el eje $y$ representa el valor del número psuedoaleatorio $\mu_i$. Éste método admite el parámetro `join_points`, que en el caso de ser verdadero, une los puntos entre los números pseudoaleatorios, facilitando la visualizacion del orden de la secuencia $\mu_1, \mu_2, \dots, \mu_n$ generada.
+Además, todas las subclases de `Generador` cuentan con el método `plot_random_numbers()`, que grafica la secuencia de números pseudoaleatorios en el plano $$ xy $$, donde el eje $$ x $$ representa el índice $$ i $$ del número pseudoaleatorio, y el eje $$ y $$ representa el valor del número psuedoaleatorio $$ \mu_i $$. Éste método admite el parámetro `join_points`, que en el caso de ser verdadero, une los puntos entre los números pseudoaleatorios, facilitando la visualizacion del orden de la secuencia $$ \mu_1, \mu_2, \dots, \mu_n $$ generada.
 
 Los generadores concretos implementados son:
 
@@ -67,7 +67,7 @@ $$
 \mu_n = \frac{x_n}{m}
 $$
 
-donde $x_n$ es la n-ésimo término del generador, $x_0$ es el primer término llamado semilla, $\mu_n$ es el n-ésimo número aleatorio generado, $m$ es el módulo, $a$ el elemento multiplicativo y $b$ es el elemento aditivo. El número aleatorio se calcula como:
+donde $$ x_n $$ es la n-ésimo término del generador, $$ x_0 $$ es el primer término llamado semilla, $$ \mu_n $$ es el n-ésimo número aleatorio generado, $$ m $$ es el módulo, $$ a $$ el elemento multiplicativo y $$ b $$ es el elemento aditivo. El número aleatorio se calcula como:
 
 La clase abstracta cuenta con un único método a implementar obligatoriamente: `has_max_sequence()`, que devuelve un booleano que indica si el generador es de ciclo completo. Por su parte, implementa los métodos que hereda de `Generator` y lanza un error si se intenta crear un *Generador* con parámetros inválidos. Por ejemplo, impide que se asigne al elemento multiplicativo un número superior al módulo.
 
@@ -75,12 +75,12 @@ La clase abstracta cuenta con un único método a implementar obligatoriamente: 
 
 Los generadores de cuadrados medios serán instancias de la clase `MiddleSquareGenerator`. Su constructor recibe los parámetros:
 
-* $k > 0 $ - es el número de dígitos de los números aleatorios resultantes
-* $x_0 > 0$ - es la semilla o valor inicial
+* $$ k > 0  $$ - es el número de dígitos de los números aleatorios resultantes
+* $$ x_0 > 0 $$ - es la semilla o valor inicial
 
 #### Generador dependiente
 
-Para evaluar el impacto de un mal generador en la creación de variables aleatorias, se desarrolló un generador dependiente, es decir, un generador de números aleatorios que no cumple con la condición de independencia. El generador esta implementado por la clase `DependentGenerator`, y su secuencia de términos $X$ se define como 
+Para evaluar el impacto de un mal generador en la creación de variables aleatorias, se desarrolló un generador dependiente, es decir, un generador de números aleatorios que no cumple con la condición de independencia. El generador esta implementado por la clase `DependentGenerator`, y su secuencia de términos $$ X $$ se define como 
 
 $$
 x_n = 
@@ -94,7 +94,7 @@ $$
 \mu_n = \frac{x_n}{x_0}
 $$
 
-Donde $x_0$ es la semilla del generador ($x_0 > 1$) y $\mu_n$ es el n-ésimo número aleatorio generado.
+Donde $$ x_0 $$ es la semilla del generador ($$ x_0 > 1 $$) y $$ \mu_n $$ es el n-ésimo número aleatorio generado.
 
 
 ```python
@@ -106,7 +106,7 @@ DependentGenerator(seed=10).get_random_numbers()
 [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]
 
 
-Como podemos observar, el generador cumple con uniformidad ya que todo los números aleatorios generados tienen igual probabilidad de ocurrencia, sin embargo, hay una clara dependencia entre un número aleatorio $\mu_i$ y su anterior $\mu_{i-1}$.
+Como podemos observar, el generador cumple con uniformidad ya que todo los números aleatorios generados tienen igual probabilidad de ocurrencia, sin embargo, hay una clara dependencia entre un número aleatorio $$ \mu_i $$ y su anterior $$ \mu_{i-1} $$.
 
 #### Ejemplos
 
@@ -122,7 +122,7 @@ x_0 = 9
 $$
 
 
-con una semilla de valor 9; se imprime la secuencia de términos $X = \{x_0, x_1, \dots, x_n\}$ y se indica si el generador es de ciclo completo.
+con una semilla de valor 9; se imprime la secuencia de términos $$ X = \{x_0, x_1, \dots, x_n\} $$ y se indica si el generador es de ciclo completo.
 
 
 ```python
@@ -131,8 +131,8 @@ from src.utils import print_markdown
 
 generator = MixedCongruentialGenerator(seed=8,a=4,b=7,m=9)
 
-print_markdown(f"La secuencia de $x_i$ es: ${generator.get_xn_sequence()}$")
-print_markdown(f"La longitud del generador es: ${len(generator)}$")
+print_markdown(f"La secuencia de $$ x_i $$ es: $$ {generator.get_xn_sequence()} $$")
+print_markdown(f"La longitud del generador es: $$ {len(generator)} $$")
 
 if generator.has_max_sequence():
     print_markdown(f"El generador tiene ciclo completo")
@@ -141,18 +141,18 @@ else:
 ```
 
 
-La secuencia de $x_i$ es: $[8, 3, 1, 2, 6, 4, 5, 0, 7]$
+La secuencia de $$ x_i $$ es: $$ [8, 3, 1, 2, 6, 4, 5, 0, 7] $$
 
 
 
-La longitud del generador es: $9$
+La longitud del generador es: $$ 9 $$
 
 
 
 El generador tiene ciclo completo
 
 
-Notemos que, como el generador es de ciclo completo, la longitud de la secuencia de números generada coincide con el módulo $m$.
+Notemos que, como el generador es de ciclo completo, la longitud de la secuencia de números generada coincide con el módulo $$ m $$.
 
 ##### Generador congruencial multiplicativo
 
@@ -162,7 +162,7 @@ $$
 x_{i+1} =  4x_i \mod 9
 $$
 
-con una semilla de 8, imprimiéndose tanto su secuencia de términos $X = \{x_0, x_1, \dots, x_n\}$ como la secuencia de números aleatorios $\mu = \{\mu_0, \mu_1, \dots, \mu_n\}$.
+con una semilla de 8, imprimiéndose tanto su secuencia de términos $$ X = \{x_0, x_1, \dots, x_n\} $$ como la secuencia de números aleatorios $$ \mu = \{\mu_0, \mu_1, \dots, \mu_n\} $$.
 
 
 
@@ -171,21 +171,21 @@ from src.random_number import MultiplicativeCongruentialGenerator
 
 generator = MultiplicativeCongruentialGenerator(seed=8,a=4,m=9)
 
-print_markdown(f"La secuencia de términos $X$ es: ${generator.get_xn_sequence()}$")
-print_markdown(f"La secuencia de números aleatorios $\mu$ es: ${generator.get_random_numbers()}$")
+print_markdown(f"La secuencia de términos $$ X $$ es: $$ {generator.get_xn_sequence()} $$")
+print_markdown(f"La secuencia de números aleatorios $$ \mu $$ es: $$ {generator.get_random_numbers()} $$")
 ```
 
 
-La secuencia de términos $X$ es: $[8, 5, 2]$
+La secuencia de términos $$ X $$ es: $$ [8, 5, 2] $$
 
 
 
-La secuencia de números aleatorios $\mu$ es: $[0.8888888888888888, 0.5555555555555556, 0.2222222222222222]$
+La secuencia de números aleatorios $$ \mu $$ es: $$ [0.8888888888888888, 0.5555555555555556, 0.2222222222222222] $$
 
 
 ##### Gráfica de generador de cuadrados medios
 Se presenta un generador que obtiene números de dos dígitos decimales y se la imprime en pantalla.
-Cabe recordar que el parámetro `join_points` por defecto es verdadero, y que por este motivo los puntos $(i,\mu_i)$ se unen con una línea.
+Cabe recordar que el parámetro `join_points` por defecto es verdadero, y que por este motivo los puntos $$ (i,\mu_i) $$ se unen con una línea.
 
 
 ```python
@@ -215,7 +215,7 @@ Las pruebas que se proveen son:
 
 La clase `ChiSquaredTest` recibe una lista de números aleatorios denominada `random_numbers`, el número entero `intervals` que representa la cantidad de intervalos, y `statistic` que es el estadístico correspondiente al nivel de significancia de la prueba.
 
-Sea $\mu = \{\mu_1, \mu_2, \dots, \mu_n\}$ una secuencia de $n$ números aleatorios y $k$ la cantidad de intervalos, se genera $k$ intervalos $[0, \frac{1}{k}), [\frac{1}{k}, \frac{2}{k}), \dots, [\frac{k-2}{k}, \frac{k-1}{k}), [\frac{k-1}{k}, 1]$ y se cuenta la cantidad de números aleatorios que caen en cada intervalo, obteniendo asi la frecuencia observada. El conjunto de números aleatorios $\mu$ pasa la prueba si
+Sea $$ \mu = \{\mu_1, \mu_2, \dots, \mu_n\} $$ una secuencia de $$ n $$ números aleatorios y $$ k $$ la cantidad de intervalos, se genera $$ k $$ intervalos $$ [0, \frac{1}{k}), [\frac{1}{k}, \frac{2}{k}), \dots, [\frac{k-2}{k}, \frac{k-1}{k}), [\frac{k-1}{k}, 1] $$ y se cuenta la cantidad de números aleatorios que caen en cada intervalo, obteniendo asi la frecuencia observada. El conjunto de números aleatorios $$ \mu $$ pasa la prueba si
 
 {% raw %}
 $$
@@ -223,19 +223,19 @@ X^2_0 = \sum_{i=1}^k \frac{({FO}_i - {FE}_i)^2}{{FE}_i} < X^2_{(\alpha, k-1)}
 $$
 {% endraw %}
 
-donde ${FE}$ es la frecuencia esperada ($\frac{n}{k}$), ${FO}$ es la frecuencia observada y $X^2_{(\alpha, k-1)}$ es el estadístico correspondiente al nivel de semejanza escogido.
+donde $$ {FE} $$ es la frecuencia esperada ($$ \frac{n}{k} $$), $$ {FO} $$ es la frecuencia observada y $$ X^2_{(\alpha, k-1)} $$ es el estadístico correspondiente al nivel de semejanza escogido.
 
 #### Prueba de Kolmogorov-Smirnov
 
 La clase `KolmogorovSmirnovTest` recibe como parámetros una lista de números aleatorios, `random_numbers`, y el estadístico correspondiente al nivel de semejanza escogido, `statistic`. Además cuenta con un método adicional llamado `graph()`, el cual grafica la secuencia de números aleatorios y la frecuencia absoluta esperada. 
 
-Dado el conjunto de números aleatorios ordenados $\mu = \{\mu_1, \mu_2, \dots, \mu_n\}$ donde $\mu_1 < \mu_2 < \dots < \mu_n$, se compara cada número aleatorio $\mu_i$ con la función de probabilidad acumulada esperada $\frac{i}{n}$ su semejanza. El conjunto de números aleatorios $\mu$ pasa la prueba si
+Dado el conjunto de números aleatorios ordenados $$ \mu = \{\mu_1, \mu_2, \dots, \mu_n\} $$ donde $$ \mu_1 < \mu_2 < \dots < \mu_n $$, se compara cada número aleatorio $$ \mu_i $$ con la función de probabilidad acumulada esperada $$ \frac{i}{n} $$ su semejanza. El conjunto de números aleatorios $$ \mu $$ pasa la prueba si
 
 $$
 {max}\{|\frac{i}{n} - \mu_i|\} < D(\alpha, n)
 $$
 
-donde  $D(\alpha, n)$ es el estadístico correspondiente al nivel de semejanza escogido.
+donde  $$ D(\alpha, n) $$ es el estadístico correspondiente al nivel de semejanza escogido.
 
 #### Prueba de rachas
 
@@ -243,7 +243,7 @@ La prueba de rachas o prueba de WaldWolfowitz es representada por la clase `Wald
 
 Para determinar las rachas, se agrupa los números aleatorios en dos categorías: *positivos* y *negativos*. Los números *positivos* son aquellos que son mayores que la media y los *negativos* son aquellos que son menores o iguales que esta. Luego se examina la secuencia de números aleatorios y se cuenta el número de cambios de categoría entre valores consecutivos. Cada cambio de categoría representa una racha.
 
-Sea $\mu = \{\mu_1, \mu_2, \dots, \mu_m\}$ el conjunto de $m$ números aleatorios a probar, $n_1$ el número de positivos y $n_2$ el número de negativos; la clase `WaldWolfowitzRunsTest` entonces calcula
+Sea $$ \mu = \{\mu_1, \mu_2, \dots, \mu_m\} $$ el conjunto de $$ m $$ números aleatorios a probar, $$ n_1 $$ el número de positivos y $$ n_2 $$ el número de negativos; la clase `WaldWolfowitzRunsTest` entonces calcula
 
 $$
 \mu_b = \frac{2n_1n_2}{m} + \frac{1}{2}
@@ -253,17 +253,17 @@ $$
 \sigma^2_b = \frac{2n_1n_2 (2n_1n_2 - m)}{m^2 (m-1)}
 $$
 
-El conjunto de números aleatorios $\mu$ pasa la prueba de rachas si
+El conjunto de números aleatorios $$ \mu $$ pasa la prueba de rachas si
 
 $$
 Z_b = \frac{b - \mu_b}{\sigma_b} < N_\alpha
 $$
 
-donde $N_\alpha$ es el estadístico correspondiente al nivel de semejanza escogido.
+donde $$ N_\alpha $$ es el estadístico correspondiente al nivel de semejanza escogido.
 
 #### Caso práctico
 
-Se realizará las distintas pruebas de aletoriedad para la secuencia de números aleatorios $\mu = \{0.84, 0.87, 0.89, 0.42, 0.11, 0.64, 0.77, 0.53, 0.9, 0.1, 0.0\}$
+Se realizará las distintas pruebas de aletoriedad para la secuencia de números aleatorios $$ \mu = \{0.84, 0.87, 0.89, 0.42, 0.11, 0.64, 0.77, 0.53, 0.9, 0.1, 0.0\} $$
 
 
 ```python
@@ -274,7 +274,7 @@ random_numbers = [0.84, 0.87, 0.89, 0.42, 0.11, 0.64, 0.77, 0.53, 0.9, 0.1, 0.0]
 
 ##### Prueba de la Chi Cuadrada
 
-Realizaremos la prueba de la Chi Cuadrada con cuatro intervalos y un estadístico igual a $7.779$
+Realizaremos la prueba de la Chi Cuadrada con cuatro intervalos y un estadístico igual a $$ 7.779 $$
 
 
 ```python
@@ -297,7 +297,7 @@ $$
 
 ##### Prueba de Kolmogorov-Smirnov
 
-Realizaremos la prueba Kolmogorov-Smirnov con un estadístico igual a $0.35242$
+Realizaremos la prueba Kolmogorov-Smirnov con un estadístico igual a $$ 0.35242 $$
 
 
 ```python
@@ -310,7 +310,7 @@ $$
 
 ##### Prueba de Rachas
 
-Realizaremos la prueba Rachas con un estadístico igual a $1.645$
+Realizaremos la prueba Rachas con un estadístico igual a $$ 1.645 $$
 
 
 ```python
@@ -320,27 +320,27 @@ randomness_test.WaldWolfowitzRunsTest(random_numbers, statistic=1.645).run_test(
 Rachas: [0.84 0.87 0.89] [0.42 0.11] [0.64 0.77] [0.53] [0.9] [0.1 0. ]
 
 
-$b = 6$ (cantidad de rachas)
+$$ b = 6 $$ (cantidad de rachas)
 
 
 
-$n_1 = 6$ (cantidad de números positivos)
+$$ n_1 = 6 $$ (cantidad de números positivos)
 
 
 
-$n_2 = 5$ (cantidad de números negativos)
+$$ n_2 = 5 $$ (cantidad de números negativos)
 
 
 
-$Z_{\alpha/2}$ = 1.645
+$$ Z_{\alpha/2} $$ = 1.645
 
 
 
-$Z_0 = \frac{b - \mu_b}{\sigma_b} = 0.029160592175990475$
+$$ Z_0 = \frac{b - \mu_b}{\sigma_b} = 0.029160592175990475 $$
 
 
 
--$Z_{\alpha/2}$ $\leq Z_0 \leq$ $Z_{\alpha/2}$ $\Rightarrow$ La hipótesis se acepta.
+-$$ Z_{\alpha/2} $$ $$ \leq Z_0 \leq $$ $$ Z_{\alpha/2} $$ $$ \Rightarrow $$ La hipótesis se acepta.
 
 
 ### Generadores de variables aleatorias
@@ -355,9 +355,9 @@ Las distribuciones previstas para la generación de variables aleatorias son:
 * `AcceptanceRejectionVariable` (distribución f según método de aceptación-rechazo)
 
 #### Variables aleatorias de distribución discreta
-Una variable aleatoria de distribución discreta o `DiscreteRandomVariable` es una función que asigna a cada número aleatorio $\mu$ generado un valor de forma tal que el conjunto obtenido siga una distribución discreta.
+Una variable aleatoria de distribución discreta o `DiscreteRandomVariable` es una función que asigna a cada número aleatorio $$ \mu $$ generado un valor de forma tal que el conjunto obtenido siga una distribución discreta.
 
-El constructor de la clase recibe un generador de números aleatorios (`generator`) y los arreglos `values` y `weights` que representan la distribución discreta. `values` es el conjunto de salida de la función, es decir, los *valores* a asignar a los números aleatorios. Estos son tipo `object`, es decir, puede ser de cualquier tipo definido en python. `weights` es el conjunto de "pesos" de cada valor de `values`. El peso es un número real que representa la probabilidad de ocurrencia del *valor*. Se distingue del de probabilidad porque los pesos no necesariamente deben sumar 1. Las probabilidades de ocurrencia de los valores son calculadas normalizando los pesos, es decir, $p_i = \frac{w_i}{\sum w_i}$.
+El constructor de la clase recibe un generador de números aleatorios (`generator`) y los arreglos `values` y `weights` que representan la distribución discreta. `values` es el conjunto de salida de la función, es decir, los *valores* a asignar a los números aleatorios. Estos son tipo `object`, es decir, puede ser de cualquier tipo definido en python. `weights` es el conjunto de "pesos" de cada valor de `values`. El peso es un número real que representa la probabilidad de ocurrencia del *valor*. Se distingue del de probabilidad porque los pesos no necesariamente deben sumar 1. Las probabilidades de ocurrencia de los valores son calculadas normalizando los pesos, es decir, $$ p_i = \frac{w_i}{\sum w_i} $$.
 
 
 
@@ -365,19 +365,19 @@ El constructor de la clase recibe un generador de números aleatorios (`generato
 `UniformDiscreteRandomVariable` es una clase que hereda de `DiscreteRandomVariable` y que asigna a todos los valores de esta un mismo peso. Por lo tanto, su constructor recibe únicamente un generador de números aleatorios (`generator`) y el arreglo de valores (`values`).
 
 #### Variables aleatorias de distribución uniforme continua
-Una variable aleatoria de distribución uniforme continua o `UniformContinuousRandomVariable` asigna a cada número aleatorio generado un número real perteneciente al intervalo $[a, b]$, de forma tal que estos siguen una distribución uniforme.
+Una variable aleatoria de distribución uniforme continua o `UniformContinuousRandomVariable` asigna a cada número aleatorio generado un número real perteneciente al intervalo $$ [a, b] $$, de forma tal que estos siguen una distribución uniforme.
 
-El constructor de la clase recibe los parámetros `generator` que es un generador de números aleatorios, es decir, una subclase de `Generator`, y los números reales `a` y `b`, que definen el intervalo de salida como $[a,b]$. 
+El constructor de la clase recibe los parámetros `generator` que es un generador de números aleatorios, es decir, una subclase de `Generator`, y los números reales `a` y `b`, que definen el intervalo de salida como $$ [a,b] $$. 
 
 #### Método de aceptación-rechazo
 Para toda función no contemplada por las distribuciones anteriores, se define la clase `AcceptanceRejectionVariable` que obtiene una secuencia de valores según este método.
 
 Los parámetros que recibe el constructor son:
 * `generator` que es el generador con el que se obtiene el conjunto de números aleatorios de entrada. Es de tipo `Generator`.
-* `a` y `b` que son los números reales que definen el intervalo de salida de la función, es decir, toda variable aleatoria generada pertenece al intervalo $[a,b]$
-* `f` definida como $f: \mathbb{R} \rightarrow [0,\infty)$ es la función densidad de la variable aleatoria. 
-* `g` definida como $g: \mathbb{R} \rightarrow [0,1]$ es una función que envuelve $f$ en el intervalo $[a,b]$ y que se utiliza para la aceptación o rechazo de los valores.
-* `M` es el valor real $M = \max{f(x)/g(x)}$
+* `a` y `b` que son los números reales que definen el intervalo de salida de la función, es decir, toda variable aleatoria generada pertenece al intervalo $$ [a,b] $$
+* `f` definida como $$ f: \mathbb{R} \rightarrow [0,\infty) $$ es la función densidad de la variable aleatoria. 
+* `g` definida como $$ g: \mathbb{R} \rightarrow [0,1] $$ es una función que envuelve $$ f $$ en el intervalo $$ [a,b] $$ y que se utiliza para la aceptación o rechazo de los valores.
+* `M` es el valor real $$ M = \max{f(x)/g(x)} $$
 
 #### Casos prácticos
 
@@ -444,7 +444,7 @@ print(randomvar.get_random_variables())
 
 ##### Ejemplo de aplicación del método de aceptación rechazo.
 
-Aplicaremos el método para obtener una variable cuya función de densidad sea $f(x) = 2x$ para $x \in [0, 1]$. Definimos $g(x) = 1$ y $M = 2$.
+Aplicaremos el método para obtener una variable cuya función de densidad sea $$ f(x) = 2x $$ para $$ x \in [0, 1] $$. Definimos $$ g(x) = 1 $$ y $$ M = 2 $$.
 
 
 ```python
@@ -482,7 +482,7 @@ El problema de ACO implica encontrar la solución óptima para un problema dado 
 
 ### Problema
 
-En nuestra simulación, nos centraremos en resolver el problema del Viajante en Djibouti, que consiste en encontrar el camino más corto que conecte $38$ ciudades en Djibouti y regrese al punto de partida. Utilizaremos los datos proporcionados por la [Universidad de Waterloo](https://www.math.uwaterloo.ca/tsp/world/countries.html#DJ), donde se expone las coordenadas de las ciudades (ubicadas en el archivo *data/dj38.tsp*) y el [camino óptimo](https://www.math.uwaterloo.ca/tsp/world/djtour.html) (con una longitud de $6656$ km). A lo largo de esta sección se utilizarán las librerias *Pandas*, *Matplotlib* y *Numpy*.
+En nuestra simulación, nos centraremos en resolver el problema del Viajante en Djibouti, que consiste en encontrar el camino más corto que conecte $$ 38 $$ ciudades en Djibouti y regrese al punto de partida. Utilizaremos los datos proporcionados por la [Universidad de Waterloo](https://www.math.uwaterloo.ca/tsp/world/countries.html#DJ), donde se expone las coordenadas de las ciudades (ubicadas en el archivo *data/dj38.tsp*) y el [camino óptimo](https://www.math.uwaterloo.ca/tsp/world/djtour.html) (con una longitud de $$ 6656 $$ km). A lo largo de esta sección se utilizarán las librerias *Pandas*, *Matplotlib* y *Numpy*.
 
 
 ```python
@@ -542,7 +542,7 @@ show_path(df, [i for i in range(len(df))])
 
 Se implementó la clase `AntSystem`, la cual permite simular la colonia de hormigas mediante el método `run()`, el cual recibe como parámetros `max_cycles` que es la cantidad de ciclos (o recorridos) y `verbose` que, en caso de ser verdadero, muestra en cada ciclo cual es la mejor solución encontrada. Además, la simulación puede ser completamente configurada mediante los atributos de la clase:
 
-- `cities_distance`: Una matriz cuadrada $M_{2\times2}$ que contiene la distancia entre cada ciudad. La distancia entra la ciudad $i$ y la ciudad $j$ está representada por el elemento $M_{ij}$
+- `cities_distance`: Una matriz cuadrada $$ M_{2\times2} $$ que contiene la distancia entre cada ciudad. La distancia entra la ciudad $$ i $$ y la ciudad $$ j $$ está representada por el elemento $$ M_{ij} $$
 - `alpha`: Factor de importancia de feromonas.
 - `beta`: Factor de importancia heurística.
 - `evaporation_rate`: Tasa de evaporación de las feromonas.
@@ -552,7 +552,7 @@ Se implementó la clase `AntSystem`, la cual permite simular la colonia de hormi
 
 Como se mencionó anteriormente, nos centraremos en comparar como cambia la solución encontrada por el algoritmo al configurar distintas variables aleatorias discretas.
 
-Comenzaremos por obtener la matriz de distancia $M$ a partir de los datos del problema. Para ello definimos la función `distance()` que calcula la distancia entre dos ciudades y la función `distance_matrix()` que calcula la matriz de distancias para un arreglo de ciudades determinado. 
+Comenzaremos por obtener la matriz de distancia $$ M $$ a partir de los datos del problema. Para ello definimos la función `distance()` que calcula la distancia entre dos ciudades y la función `distance_matrix()` que calcula la matriz de distancias para un arreglo de ciudades determinado. 
 
 
 ```python
@@ -592,7 +592,7 @@ M
 
 
 
-Por ejemplo, la distancia entre la *ciudad 3* y la *ciudad 4* es $M_{3,4} \approx 222.539$ km, tal como se muestra a continuación.
+Por ejemplo, la distancia entre la *ciudad 3* y la *ciudad 4* es $$ M_{3,4} \approx 222.539 $$ km, tal como se muestra a continuación.
 
 
 ```python
@@ -606,7 +606,7 @@ M[3, 4]
 
 
 
-Ahora, iniciaremos un sistema de hormigas con un factor de importancia de fermomonas $\alpha=1$, un factor de importance heurística de $\beta=5$ y una tasa de evaporación $p = 0.5$, tal como se sugiere en **[ACO]**. Además el sistema estará compuesto de $10$ hormigas y configuraremos un recorrido cerrado. A contiuación se muestra la función `get_ant_system()`, que recibe un generador de variables aleatorias discretas y retorna un sistema de hormigas con las características anteriormente descriptas.
+Ahora, iniciaremos un sistema de hormigas con un factor de importancia de fermomonas $$ \alpha=1 $$, un factor de importance heurística de $$ \beta=5 $$ y una tasa de evaporación $$ p = 0.5 $$, tal como se sugiere en **[ACO]**. Además el sistema estará compuesto de $$ 10 $$ hormigas y configuraremos un recorrido cerrado. A contiuación se muestra la función `get_ant_system()`, que recibe un generador de variables aleatorias discretas y retorna un sistema de hormigas con las características anteriormente descriptas.
 
 
 ```python
@@ -627,7 +627,7 @@ def get_ant_system(discrete_random_variable: DiscreteRandomVariable):
 
 #### Análisis de distintos generadores de números aleatorios
 
-A continuación analizaremos como el rendimiento de distintos generadores de números aleatorios afecta al resultado obtenido por la simulación. Para ello definiremos tres generadores, los cuales serán sometidos a las distintas pruebas de aletoriedad, y luego se mostrarán los resultados obtenidos al ejecutar $100$ ciclos de la simulación utilizando una variable aleatoria discreta compuesta por cada uno de los generadores.
+A continuación analizaremos como el rendimiento de distintos generadores de números aleatorios afecta al resultado obtenido por la simulación. Para ello definiremos tres generadores, los cuales serán sometidos a las distintas pruebas de aletoriedad, y luego se mostrarán los resultados obtenidos al ejecutar $$ 100 $$ ciclos de la simulación utilizando una variable aleatoria discreta compuesta por cada uno de los generadores.
 
 
 ```python
@@ -637,7 +637,7 @@ from src import randomness_test
 
 ##### Generador 1
 
-El primero es un generador congruencial mixto, con una longitud de ciclo de $43901$.
+El primero es un generador congruencial mixto, con una longitud de ciclo de $$ 43901 $$.
 
 $$
 x_{n} = \left( 127x_{n-1} + 52711 \right)\bmod 87803
@@ -657,7 +657,7 @@ print(len(generator1))
 
 ###### Pruebas de aletoriedad
 
-A continuación se realiza la prueba de Chi Cuadrada con $11$ intervalos y un nivel de significancia de $\alpha = 0.01$. El valor del estadístico es $\chi^2_{(v=10, \alpha=0.01)} = 23.2093$
+A continuación se realiza la prueba de Chi Cuadrada con $$ 11 $$ intervalos y un nivel de significancia de $$ \alpha = 0.01 $$. El valor del estadístico es $$ \chi^2_{(v=10, \alpha=0.01)} = 23.2093 $$
 
 
 ```python
@@ -671,7 +671,7 @@ $$\chi^2_{(\alpha, k=10)} = 23.2093$$
 $$\chi^2_0 <  \chi^2_{(\alpha, k=10)} \Rightarrow \text{La hipótesis se acepta.}$$
 
 
-Ahora, realizamos la prueba de Kolmogorov-Smirnov con un nivel de significancia de $\alpha = 0.01$. El valor del estadístico es $D(\alpha, n) = \frac{1.63}{43901}$
+Ahora, realizamos la prueba de Kolmogorov-Smirnov con un nivel de significancia de $$ \alpha = 0.01 $$. El valor del estadístico es $$ D(\alpha, n) = \frac{1.63}{43901} $$
 
 
 ```python
@@ -684,7 +684,7 @@ max|\frac{i}{n} - \mu_i| = 0.0005467484049701023 > D(\alpha, n=43901) = 3.712899
 $$
 
 
-Debido a la extensa longitud de la secuencia de números aleatorios generadas, se realiza la prueba de Rachas para los primeros $100$ números aleatorios generados, con un nivel de significancia de $\alpha = 0.0099$. El valor del estadístico es $Z = 2.33$
+Debido a la extensa longitud de la secuencia de números aleatorios generadas, se realiza la prueba de Rachas para los primeros $$ 100 $$ números aleatorios generados, con un nivel de significancia de $$ \alpha = 0.0099 $$. El valor del estadístico es $$ Z = 2.33 $$
 
 
 ```python
@@ -694,27 +694,27 @@ randomness_test.WaldWolfowitzRunsTest(generator1.get_random_numbers()[:100], sta
 Rachas: [0.00126419] [0.76088516] [0.23274831 0.15936813] ... [0.41868729] [0.77361821]
 
 
-$b = 54$ (cantidad de rachas)
+$$ b = 54 $$ (cantidad de rachas)
 
 
 
-$n_1 = 56$ (cantidad de números positivos)
+$$ n_1 = 56 $$ (cantidad de números positivos)
 
 
 
-$n_2 = 44$ (cantidad de números negativos)
+$$ n_2 = 44 $$ (cantidad de números negativos)
 
 
 
-$Z_{\alpha/2}$ = 2.33
+$$ Z_{\alpha/2} $$ = 2.33
 
 
 
-$Z_0 = \frac{b - \mu_b}{\sigma_b} = 0.8608174614728519$
+$$ Z_0 = \frac{b - \mu_b}{\sigma_b} = 0.8608174614728519 $$
 
 
 
--$Z_{\alpha/2}$ $\leq Z_0 \leq$ $Z_{\alpha/2}$ $\Rightarrow$ La hipótesis se acepta.
+-$$ Z_{\alpha/2} $$ $$ \leq Z_0 \leq $$ $$ Z_{\alpha/2} $$ $$ \Rightarrow $$ La hipótesis se acepta.
 
 
 ###### Resultado de la simulación
@@ -752,11 +752,11 @@ show_path(df, ant_system1.best_solution)
     
 
 
-Como se puede observar, el *Generador 1* pasó la prueba de la Chi Cuadrada y de Rachas, sin embargo no pasó la prueba de Kolmogorov-Smirnov. El mejor recorrido encontrado utilizando este generador tiene una longitud de aproximadamente $6667.03$ kilómetros, tan solo  $11.03$ kilómetros por arriba del óptimo.
+Como se puede observar, el *Generador 1* pasó la prueba de la Chi Cuadrada y de Rachas, sin embargo no pasó la prueba de Kolmogorov-Smirnov. El mejor recorrido encontrado utilizando este generador tiene una longitud de aproximadamente $$ 6667.03 $$ kilómetros, tan solo  $$ 11.03 $$ kilómetros por arriba del óptimo.
 
 ##### Generador 2
 
-El segundo es un generador congruencial mixto de ciclo completo, con una longitud de ciclo de $128$.
+El segundo es un generador congruencial mixto de ciclo completo, con una longitud de ciclo de $$ 128 $$.
 
 $$
 x_{n} = \left( 5 x_{n-1} + 7 \right)\bmod 128
@@ -776,7 +776,7 @@ print(len(generator2))
 
 ###### Pruebas de aletoriedad
 
-A continuación se realiza la prueba de Chi Cuadrada con $11$ intervalos y un nivel de significancia de $\alpha = 0.01$. El valor del estadístico es $\chi^2_{(v=10, \alpha=0.01)} = 23.2093$
+A continuación se realiza la prueba de Chi Cuadrada con $$ 11 $$ intervalos y un nivel de significancia de $$ \alpha = 0.01 $$. El valor del estadístico es $$ \chi^2_{(v=10, \alpha=0.01)} = 23.2093 $$
 
 
 ```python
@@ -796,7 +796,7 @@ $$\chi^2_{(\alpha, k=10)} = 23.2093$$
 $$\chi^2_0 <  \chi^2_{(\alpha, k=10)} \Rightarrow \text{La hipótesis se acepta.}$$
 
 
-Ahora, realizamos la prueba de Kolmogorov-Smirnov con un nivel de significancia de $\alpha = 0.01$. El valor del estadístico es $D(\alpha, n) = \frac{1.63}{128}$
+Ahora, realizamos la prueba de Kolmogorov-Smirnov con un nivel de significancia de $$ \alpha = 0.01 $$. El valor del estadístico es $$ D(\alpha, n) = \frac{1.63}{128} $$
 
 
 ```python
@@ -809,7 +809,7 @@ max|\frac{i}{n} - \mu_i| = 0.0078125 < D(\alpha, n=128) = 0.012734375 \Rightarro
 $$
 
 
-Por último, se realiza la prueba de Rachas con un nivel de significancia de $\alpha = 0.0099$. El valor del estadístico es $Z = 2.33$.
+Por último, se realiza la prueba de Rachas con un nivel de significancia de $$ \alpha = 0.0099 $$. El valor del estadístico es $$ Z = 2.33 $$.
 
 
 ```python
@@ -820,27 +820,27 @@ Rachas: [0.03125   0.2109375 0.109375 ] [0.6015625] [0.0625    0.3671875] ... [0
     
 
 
-$b = 55$ (cantidad de rachas)
+$$ b = 55 $$ (cantidad de rachas)
 
 
 
-$n_1 = 64$ (cantidad de números positivos)
+$$ n_1 = 64 $$ (cantidad de números positivos)
 
 
 
-$n_2 = 64$ (cantidad de números negativos)
+$$ n_2 = 64 $$ (cantidad de números negativos)
 
 
 
-$Z_{\alpha/2}$ = 2.33
+$$ Z_{\alpha/2} $$ = 2.33
 
 
 
-$Z_0 = \frac{b - \mu_b}{\sigma_b} = -1.6860296357240232$
+$$ Z_0 = \frac{b - \mu_b}{\sigma_b} = -1.6860296357240232 $$
 
 
 
--$Z_{\alpha/2}$ $\leq Z_0 \leq$ $Z_{\alpha/2}$ $\Rightarrow$ La hipótesis se acepta.
+-$$ Z_{\alpha/2} $$ $$ \leq Z_0 \leq $$ $$ Z_{\alpha/2} $$ $$ \Rightarrow $$ La hipótesis se acepta.
 
 
 ###### Resultado de la simulación
@@ -879,13 +879,13 @@ show_path(df, ant_system2.best_solution)
     
 
 
-Como se puede observar, el *Generador 2* pasó todas las pruebas de aletoriedad. El mejor recorrido encontrado utilizando este generador tiene una longitud de aproximadamente $6987.76$ kilómetros, con $331.76$ kilómetros por arriba del óptimo.
+Como se puede observar, el *Generador 2* pasó todas las pruebas de aletoriedad. El mejor recorrido encontrado utilizando este generador tiene una longitud de aproximadamente $$ 6987.76 $$ kilómetros, con $$ 331.76 $$ kilómetros por arriba del óptimo.
 
-El *Generador 2*, a diferencia del *Generador 1*, superó el prueba de Kolmogorov-Smirnov, lo que sugiere que presenta una mayor uniformidad y por ende, es un mejor generador. Sin embargo el *Generador 1* logró mejores resultados. Esto puede justificarse debido que la longitud del *Generador 2* es minúscula, tan solo puede generar $128$ números aleatorios diferentes, mientras que el *Generador 1* consigue una secuencia de $43901$ números aleatorios distintos.
+El *Generador 2*, a diferencia del *Generador 1*, superó el prueba de Kolmogorov-Smirnov, lo que sugiere que presenta una mayor uniformidad y por ende, es un mejor generador. Sin embargo el *Generador 1* logró mejores resultados. Esto puede justificarse debido que la longitud del *Generador 2* es minúscula, tan solo puede generar $$ 128 $$ números aleatorios diferentes, mientras que el *Generador 1* consigue una secuencia de $$ 43901 $$ números aleatorios distintos.
 
 ##### Generador 3
 
-El tercer es un generador dependiente, con una longitud de ciclo de $2^{20}$.
+El tercer es un generador dependiente, con una longitud de ciclo de $$ 2^{20} $$.
 
 $$
 x_n = 
@@ -913,7 +913,7 @@ len(generator3)
 
 ###### Pruebas de aletoriedad
 
-A continuación se realiza la prueba de Chi Cuadrada con $11$ intervalos y un nivel de significancia de $\alpha = 0.01$. El valor del estadístico es $\chi^2_{(v=10, \alpha=0.01)} = 23.2093$
+A continuación se realiza la prueba de Chi Cuadrada con $$ 11 $$ intervalos y un nivel de significancia de $$ \alpha = 0.01 $$. El valor del estadístico es $$ \chi^2_{(v=10, \alpha=0.01)} = 23.2093 $$
 
 
 ```python
@@ -931,7 +931,7 @@ $$\chi^2_{(\alpha, k=10)} = 23.2093$$
 $$\chi^2_0 <  \chi^2_{(\alpha, k=10)} \Rightarrow \text{La hipótesis se acepta.}$$
 
 
-Ahora, realizamos la prueba de Kolmogorov-Smirnov con un nivel de significancia de $\alpha = 0.01$. El valor del estadístico es $D(\alpha, n) = \frac{1.63}{1048576}$
+Ahora, realizamos la prueba de Kolmogorov-Smirnov con un nivel de significancia de $$ \alpha = 0.01 $$. El valor del estadístico es $$ D(\alpha, n) = \frac{1.63}{1048576} $$
 
 
 ```python
@@ -944,7 +944,7 @@ max|\frac{i}{n} - \mu_i| = 9.5367431640625e-07 < D(\alpha, n=1048576) = 1.554489
 $$
 
 
-Debido a la extensa longitud de la secuencia de números aleatorios generadas, se realiza la prueba de Rachas para los primeros $100$ números aleatorios generados, con un nivel de significancia de $\alpha = 0.0099$. El valor del estadístico es $Z = 2.33$
+Debido a la extensa longitud de la secuencia de números aleatorios generadas, se realiza la prueba de Rachas para los primeros $$ 100 $$ números aleatorios generados, con un nivel de significancia de $$ \alpha = 0.0099 $$. El valor del estadístico es $$ Z = 2.33 $$
 
 
 ```python
@@ -955,27 +955,27 @@ Rachas: [1.         0.99999905 ...] [0.99995232 0.99995136 ...]
     
 
 
-$b = 2$ (cantidad de rachas)
+$$ b = 2 $$ (cantidad de rachas)
 
 
 
-$n_1 = 50$ (cantidad de números positivos)
+$$ n_1 = 50 $$ (cantidad de números positivos)
 
 
 
-$n_2 = 50$ (cantidad de números negativos)
+$$ n_2 = 50 $$ (cantidad de números negativos)
 
 
 
-$Z_{\alpha/2}$ = 2.33
+$$ Z_{\alpha/2} $$ = 2.33
 
 
 
-$Z_0 = \frac{b - \mu_b}{\sigma_b} = -9.74936418649013$
+$$ Z_0 = \frac{b - \mu_b}{\sigma_b} = -9.74936418649013 $$
 
 
 
-$Z_0 <$ -$Z_{\alpha/2}$ $\Rightarrow$ La hipótesis se rechaza.
+$$ Z_0 < $$ -$$ Z_{\alpha/2} $$ $$ \Rightarrow $$ La hipótesis se rechaza.
 
 
 ###### Resultado de la simulación
@@ -1014,7 +1014,7 @@ show_path(df, ant_system3.best_solution)
     
 
 
-Como era de esperarse, el *Generador 3* pasa las pruebas de uniformidad pero no de independencia, y es justamente la fuerte dependencia en la generación de los números aleatorios la que provoca que la simulación devuelva pésimos resultados. Como se muestra anteriormente, el mejor viaje encontrado tiene una longitud de $11000.70$ kilómetros, $4344.70$ kilómetros más que la solución óptima.
+Como era de esperarse, el *Generador 3* pasa las pruebas de uniformidad pero no de independencia, y es justamente la fuerte dependencia en la generación de los números aleatorios la que provoca que la simulación devuelva pésimos resultados. Como se muestra anteriormente, el mejor viaje encontrado tiene una longitud de $$ 11000.70 $$ kilómetros, $$ 4344.70 $$ kilómetros más que la solución óptima.
 
 ## Conclusión
 
